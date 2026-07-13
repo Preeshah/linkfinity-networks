@@ -1,10 +1,10 @@
 "use client";
 
 import {
-    ArrowRight,
     ShieldCheck,
     Smartphone,
-    Zap
+    Zap,
+    CheckCircle
 } from "lucide-react";
 
 import { motion } from "framer-motion";
@@ -13,50 +13,76 @@ import HeroLeadForm from "./HeroLeadForm";
 
 export default function Hero() {
 
+    const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
+
+
     return (
 
-        <section className="relative overflow-hidden pt-40 pb-24 bg-gradient-to-b from-white via-blue-50 to-white">
+        <section className="relative overflow-hidden bg-gradient-to-b from-white via-blue-50 to-white pt-24 pb-8">
 
 
             {/* Background Glow */}
 
-            <div className="absolute -top-40 -right-32 h-[500px] w-[500px] rounded-full bg-blue-300/20 blur-[140px]" />
+            <div className="absolute -top-40 -right-32 h-[450px] w-[450px] rounded-full bg-blue-300/20 blur-[120px]" />
 
-            <div className="absolute bottom-0 -left-32 h-[350px] w-[350px] rounded-full bg-sky-200/30 blur-[120px]" />
+            <div className="absolute bottom-0 -left-32 h-[280px] w-[280px] rounded-full bg-sky-200/30 blur-[100px]" />
+
 
 
             <div className="relative max-w-7xl mx-auto px-6">
 
 
-                <div className="grid items-center gap-16 lg:grid-cols-2">
+                <div className="grid items-center gap-10 lg:grid-cols-2">
+
+
 
 
 
                     {/* LEFT SIDE */}
 
+
                     <motion.div
 
-                        initial={{ opacity: 0, y: 30 }}
+                        initial={{
+                            opacity: 0,
+                            y: 30
+                        }}
 
-                        animate={{ opacity: 1, y: 0 }}
+                        animate={{
+                            opacity: 1,
+                            y: 0
+                        }}
 
-                        transition={{ duration: 0.6 }}
+                        transition={{
+                            duration: 0.6
+                        }}
 
                     >
 
 
-                        <div className="inline-flex items-center gap-2 rounded-full bg-blue-100 px-5 py-2 text-blue-700 font-medium">
 
-                            <ShieldCheck size={18} />
+
+                        {/* Badge */}
+
+                        <div className="inline-flex items-center gap-2 rounded-full bg-blue-100 px-4 py-1.5 text-sm font-medium text-blue-700">
+
+
+                            <ShieldCheck size={16} />
+
 
                             Enterprise Cloud Communications
+
 
                         </div>
 
 
 
 
-                        <h1 className="mt-8 text-5xl font-bold leading-tight text-gray-900 lg:text-6xl">
+
+
+                        {/* Main Heading */}
+
+                        <h1 className="mt-5 text-4xl font-bold leading-tight text-slate-900 md:text-5xl">
 
 
                             Communication
@@ -71,15 +97,19 @@ export default function Hero() {
 
 
 
-                        <p className="mt-6 max-w-xl text-lg leading-8 text-gray-600">
 
 
-                            Power Every Conversation. Anywhere.
+
+                        {/* Supporting Text */}
+
+                        <p className="mt-4 max-w-lg text-base leading-7 text-slate-600">
 
 
-                            Cloud VoIP, mobile apps, smart call routing,
+                            Modern cloud phone solutions built for Anyone and Everyone.
+                            <br />
 
-                            and 35+ professional business features.
+                            Get 35+ professional features, mobile apps,
+                            smart call routing, and reliable communication.
 
 
                         </p>
@@ -88,90 +118,106 @@ export default function Hero() {
 
 
 
-                        <div className="mt-8 flex flex-col gap-4 sm:flex-row">
 
 
-                            <button className="flex items-center justify-center gap-2 rounded-xl bg-blue-600 px-8 py-4 font-semibold text-white hover:bg-blue-700">
+                        {/* Hero Image */}
 
 
-                                Start Your 15-Day Free Trial
+                        <motion.div
 
-                                <ArrowRight size={18} />
+                            initial={{
+                                opacity: 0,
+                                scale: 0.95
+                            }}
+
+                            animate={{
+                                opacity: 1,
+                                scale: 1
+                            }}
+
+                            transition={{
+                                duration: 0.6,
+                                delay: 0.2
+                            }}
+
+                            className="mt-6 -ml-2"
+
+                        >
 
 
-                            </button>
+                            <img
+
+                                src={`${basePath}/hero-image.png`}
+
+                                alt="LinkFinity Networks cloud phone system"
+
+                                className="w-full max-w-xl rounded-3xl shadow-2xl border border-gray-100"
+
+                            />
+
+
+                        </motion.div>
 
 
 
 
-                            <button className="rounded-xl border border-gray-300 bg-white px-8 py-4 font-semibold text-gray-700 hover:border-blue-600 hover:text-blue-600">
 
 
-                                Schedule Demo
+
+                        {/* Feature Highlights */}
 
 
-                            </button>
+                        <div className="mt-5 grid grid-cols-2 gap-3">
+
+
+                            <Feature
+
+                                icon={<Zap className="text-blue-600" size={17} />}
+
+                                title="35+ Features"
+
+                            />
+
+
+
+                            <Feature
+
+                                icon={<Smartphone className="text-blue-600" size={17} />}
+
+                                title="Mobile Apps"
+
+                            />
+
+
+
+                            <Feature
+
+                                icon={<CheckCircle className="text-blue-600" size={17} />}
+
+                                title="Keep Numbers"
+
+                            />
+
+
+
+                            <Feature
+
+                                icon={<ShieldCheck className="text-blue-600" size={17} />}
+
+                                title="US Support"
+
+                            />
+
 
 
                         </div>
 
-
-
-
-
-
-                        <div className="mt-10 grid grid-cols-2 gap-6">
-
-
-
-                            <div className="flex items-center gap-3">
-
-
-                                <div className="rounded-xl bg-blue-100 p-3">
-
-                                    <Zap className="text-blue-600" />
-
-                                </div>
-
-
-                                <p className="font-semibold text-gray-700">
-
-                                    35+ Features
-
-                                </p>
-
-
-                            </div>
-
-
-
-
-
-                            <div className="flex items-center gap-3">
-
-
-                                <div className="rounded-xl bg-blue-100 p-3">
-
-                                    <Smartphone className="text-blue-600" />
-
-                                </div>
-
-
-                                <p className="font-semibold text-gray-700">
-
-                                    Mobile Ready
-
-                                </p>
-
-
-                            </div>
-
-
-                        </div>
 
 
 
                     </motion.div>
+
+
 
 
 
@@ -185,23 +231,40 @@ export default function Hero() {
 
                     <motion.div
 
-                        initial={{ opacity: 0, scale: 0.95 }}
 
-                        animate={{ opacity: 1, scale: 1 }}
+                        initial={{
+                            opacity: 0,
+                            scale: 0.95
+                        }}
 
-                        transition={{ duration: 0.7 }}
 
-                        className="relative"
+                        animate={{
+                            opacity: 1,
+                            scale: 1
+                        }}
+
+
+                        transition={{
+                            duration: 0.7
+                        }}
+
+
+                        className="relative flex justify-center lg:justify-end"
+
 
                     >
 
 
 
-                        <div className="absolute -inset-10 bg-blue-400/20 blur-3xl rounded-full" />
+                        {/* Form Glow */}
+
+                        <div className="absolute h-[520px] w-[520px] rounded-full bg-blue-500/10 blur-[110px]" />
 
 
 
-                        <div className="relative">
+
+
+                        <div className="relative w-full max-w-lg">
 
 
                             <HeroLeadForm />
@@ -211,7 +274,10 @@ export default function Hero() {
 
 
 
+
+
                     </motion.div>
+
 
 
 
@@ -222,7 +288,59 @@ export default function Hero() {
             </div>
 
 
+
         </section>
+
+    );
+
+}
+
+
+
+
+
+
+
+function Feature({
+
+    icon,
+
+    title,
+
+}: {
+
+    icon: React.ReactNode;
+
+    title: string;
+
+}) {
+
+
+    return (
+
+        <div className="flex items-center gap-2">
+
+
+            <div className="rounded-lg bg-blue-100 p-1.5">
+
+
+                {icon}
+
+
+            </div>
+
+
+            <p className="text-sm font-semibold text-slate-800">
+
+
+                {title}
+
+
+            </p>
+
+
+        </div>
+
 
     );
 
