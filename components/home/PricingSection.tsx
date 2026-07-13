@@ -12,7 +12,7 @@ const plans = [
 
     {
         name: "Starter",
-        price: "$30",
+        price: "$24.99",
         subtitle: "For small teams getting started",
         features: [
             "Business Phone Number",
@@ -28,7 +28,7 @@ const plans = [
 
     {
         name: "Business",
-        price: "Custom",
+        price: "$34.99",
         subtitle: "For growing organizations",
         popular: true,
         features: [
@@ -45,7 +45,7 @@ const plans = [
 
     {
         name: "Enterprise",
-        price: "Custom",
+        price: "$39.99",
         subtitle: "For advanced communication needs",
         features: [
             "Multi-location Support",
@@ -167,7 +167,7 @@ export default function PricingSection() {
 
 
 
-                            <div className="mt-8 text-4xl font-bold">
+                            <div className="mt-8 text-4xl font-bold text-gray-900 ">
 
                                 {plan.price}
 
@@ -239,8 +239,9 @@ export default function PricingSection() {
                 <div className="mt-12 text-center text-sm text-gray-500">
 
 
-                    * Pricing starts at $30/user/month with a minimum of 4 lines/extensions.
+                    * Pricing starts at $24.99/user/month with a minimum of 4 lines/extensions.
                     Final pricing depends on users, features, equipment, and service requirements.
+                    Please contact our sales team for a personalized quote and to discuss your specific needs.
 
 
                 </div>

@@ -237,7 +237,7 @@ export default function WhyLinkFinity() {
 
                         <Settings className="text-blue-600" />
 
-                        <h4 className="font-bold mt-4">
+                        <h4 className="font-bold mt-4 text-gray-900">
 
                             Simple Management
 
@@ -257,7 +257,7 @@ export default function WhyLinkFinity() {
 
                         <Smartphone className="text-blue-600" />
 
-                        <h4 className="font-bold mt-4">
+                        <h4 className="font-bold mt-4 text-gray-900">
 
                             Work Anywhere
 
@@ -277,7 +277,7 @@ export default function WhyLinkFinity() {
 
                         <TrendingUp className="text-blue-600" />
 
-                        <h4 className="font-bold mt-4">
+                        <h4 className="font-bold mt-4 text-gray-900">
 
                             Built To Grow
 

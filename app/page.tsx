@@ -1,6 +1,6 @@
 import Navbar from "@/components/home/Navbar";
 import TrustSection from "@/components/home/TrustSection";
-import WhyLinkFinity from "@/components/WhyLinkFinity";
+import WhyLinkFinity from "@/components/home/WhyLinkFinity";
 import FeaturesSection from "@/components/home/FeaturesSection";
 import IndustriesSection from "@/components/home/IndustriesSection";
 import PricingSection from "@/components/home/PricingSection";

@@ -11,7 +11,7 @@ export default function Navbar() {
                 <div className="flex items-center gap-3">
 
                     <img
-                        src="/logo.png"
+                        src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/logo.png`}
                         alt="LinkFinity logo"
                         className="h-11 w-auto object-contain"
                     />
