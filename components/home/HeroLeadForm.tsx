@@ -9,6 +9,19 @@ import {
 } from "lucide-react";
 
 
+const GOOGLE_SCRIPT_URL =
+    "https://script.google.com/macros/s/AKfycbwjWUj61tVCEQCn-lYg2WCb6eJkLOzp03Xwxu3mERABlNyDT-2WOQjOAffQDQj_GDSW/exec";
+
+
+type FormErrors = {
+    businessName?: string;
+    name?: string;
+    email?: string;
+    phone?: string;
+    lines?: string;
+};
+
+
 export default function HeroLeadForm() {
 
 
@@ -17,13 +30,116 @@ export default function HeroLeadForm() {
     const [loading, setLoading] = useState(false);
 
 
+    const [errors, setErrors] = useState<FormErrors>({});
 
-    async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+
+
+    function validate(formData: {
+        businessName: string;
+        name: string;
+        email: string;
+        phone: string;
+        lines: string;
+    }) {
+
+
+        const newErrors: FormErrors = {};
+
+
+
+        if (!formData.businessName.trim()) {
+
+            newErrors.businessName =
+                "Business name is required.";
+
+        }
+
+
+
+        if (!formData.name.trim()) {
+
+            newErrors.name =
+                "Your name is required.";
+
+        }
+
+
+
+        if (!formData.email.trim()) {
+
+            newErrors.email =
+                "Email is required.";
+
+        } else if (
+            !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(
+                formData.email
+            )
+        ) {
+
+            newErrors.email =
+                "Enter a valid email address.";
+
+        }
+
+
+
+        const cleanPhone =
+            formData.phone.replace(/\D/g, "");
+
+
+
+        if (!cleanPhone) {
+
+            newErrors.phone =
+                "Phone number is required.";
+
+        } else if (
+            cleanPhone.length !== 10
+        ) {
+
+            newErrors.phone =
+                "Enter a valid 10 digit phone number.";
+
+        }
+
+
+
+        if (formData.lines) {
+
+            const lineNumber =
+                Number(formData.lines);
+
+
+
+            if (
+                !Number.isInteger(lineNumber) ||
+                lineNumber < 1 ||
+                lineNumber > 1000
+            ) {
+
+                newErrors.lines =
+                    "Enter a valid number of lines.";
+
+            }
+
+        }
+
+
+
+        return newErrors;
+
+    }
+
+
+
+
+
+    async function handleSubmit(
+        e: React.FormEvent<HTMLFormElement>
+    ) {
 
 
         e.preventDefault();
-
-        setLoading(true);
 
 
 
@@ -35,26 +151,74 @@ export default function HeroLeadForm() {
 
 
             businessName:
-                (form.elements.namedItem("businessName") as HTMLInputElement).value,
+                (
+                    form.elements.namedItem(
+                        "businessName"
+                    ) as HTMLInputElement
+                ).value.trim(),
+
 
 
             name:
-                (form.elements.namedItem("name") as HTMLInputElement).value,
+                (
+                    form.elements.namedItem(
+                        "name"
+                    ) as HTMLInputElement
+                ).value.trim(),
+
 
 
             email:
-                (form.elements.namedItem("email") as HTMLInputElement).value,
+                (
+                    form.elements.namedItem(
+                        "email"
+                    ) as HTMLInputElement
+                ).value.trim(),
+
 
 
             phone:
-                (form.elements.namedItem("phone") as HTMLInputElement).value,
+                (
+                    form.elements.namedItem(
+                        "phone"
+                    ) as HTMLInputElement
+                ).value.trim(),
+
 
 
             lines:
-                (form.elements.namedItem("lines") as HTMLInputElement).value,
+                (
+                    form.elements.namedItem(
+                        "lines"
+                    ) as HTMLInputElement
+                ).value.trim(),
 
 
         };
+
+
+
+        const validationErrors =
+            validate(formData);
+
+
+
+        setErrors(validationErrors);
+
+
+
+        if (
+            Object.keys(validationErrors).length > 0
+        ) {
+
+            return;
+
+        }
+
+
+
+
+        setLoading(true);
 
 
 
@@ -64,9 +228,7 @@ export default function HeroLeadForm() {
 
             await fetch(
 
-
-                "https://script.google.com/macros/s/AKfycbwjWUj61tVCEQCn-lYg2WCb6eJkLOzp03Xwxu3mERABlNyDT-2WOQjOAffQDQj_GDSW/exec",
-
+                GOOGLE_SCRIPT_URL,
 
                 {
 
@@ -79,20 +241,30 @@ export default function HeroLeadForm() {
 
                     headers: {
 
-
-                        "Content-Type": "application/json",
-
+                        "Content-Type":
+                            "application/json",
 
                     },
 
 
-                    body: JSON.stringify(formData),
+                    body:
+                        JSON.stringify({
+
+                            ...formData,
+
+                            phone:
+                                formData.phone.replace(
+                                    /\D/g,
+                                    ""
+                                ),
+
+                        }),
 
 
                 }
 
-
             );
+
 
 
 
@@ -111,11 +283,13 @@ export default function HeroLeadForm() {
             );
 
 
+        } finally {
+
+
+            setLoading(false);
+
+
         }
-
-
-
-        setLoading(false);
 
 
     }
@@ -126,9 +300,7 @@ export default function HeroLeadForm() {
 
     return (
 
-
         <div className="bg-white rounded-3xl shadow-2xl border border-gray-100 p-6">
-
 
 
             {!submitted ? (
@@ -137,25 +309,14 @@ export default function HeroLeadForm() {
                 <>
 
 
-
-                    {/* Form Header */}
-
-
                     <div className="flex items-center gap-3 mb-5">
-
 
 
                         <div className="relative bg-blue-100 p-3 rounded-xl">
 
 
-
-                            {/* Pulse Ring */}
-
                             <span className="absolute inset-0 rounded-xl bg-blue-400/30 animate-ping"></span>
 
-
-
-                            {/* Ringing Phone */}
 
                             <Phone
 
@@ -170,35 +331,24 @@ export default function HeroLeadForm() {
 
 
 
-
-
                         <div>
-
 
 
                             <h2 className="text-xl font-bold text-gray-900">
 
-
                                 Start Your Free Trial
-
 
                             </h2>
 
 
-
                             <p className="text-sm text-gray-500">
 
-
                                 15-Day Free Trial • No Obligation
-
 
                             </p>
 
 
-
                         </div>
-
-
 
 
                     </div>
@@ -207,103 +357,70 @@ export default function HeroLeadForm() {
 
 
 
-
-
-
                     <form
-
                         onSubmit={handleSubmit}
-
                         className="space-y-3"
-
                     >
 
 
 
+                        {[
+                            {
+                                name: "businessName",
+                                placeholder: "Business Name"
+                            },
+                            {
+                                name: "name",
+                                placeholder: "Your Name"
+                            },
+                            {
+                                name: "email",
+                                placeholder: "Business Email",
+                                type: "email"
+                            },
+                            {
+                                name: "phone",
+                                placeholder: "Phone Number"
+                            },
+                            {
+                                name: "lines",
+                                placeholder: "Number of Lines Needed"
+                            }
+
+                        ].map((field) => (
 
 
-                        <input
-
-                            name="businessName"
-
-                            required
-
-                            placeholder="Business Name"
-
-                            className="text-gray-700 w-full rounded-xl border border-gray-300 px-4 py-2.5 focus:border-blue-600 focus:outline-none"
-
-                        />
+                            <div key={field.name}>
 
 
+                                <input
+
+                                    name={field.name}
+
+                                    type={field.type || "text"}
+
+                                    placeholder={field.placeholder}
+
+                                    className="text-gray-700 w-full rounded-xl border border-gray-300 px-4 py-2.5 focus:border-blue-600 focus:outline-none"
+
+                                />
 
 
+                                {errors[field.name as keyof FormErrors] && (
 
-                        <input
+                                    <p className="text-red-500 text-xs mt-1">
 
-                            name="name"
+                                        {errors[field.name as keyof FormErrors]}
 
-                            required
+                                    </p>
 
-                            placeholder="Your Name"
-
-                            className="text-gray-700 w-full rounded-xl border border-gray-300 px-4 py-2.5 focus:border-blue-600 focus:outline-none"
-
-                        />
+                                )}
 
 
+                            </div>
 
 
-
-
-                        <input
-
-                            name="email"
-
-                            required
-
-                            type="email"
-
-                            placeholder="Business Email"
-
-                            className="text-gray-700 w-full rounded-xl border border-gray-300 px-4 py-2.5 focus:border-blue-600 focus:outline-none"
-
-                        />
-
-
-
-
-
-
-                        <input
-
-                            name="phone"
-
-                            required
-
-                            placeholder="Phone Number"
-
-                            className="text-gray-700 w-full rounded-xl border border-gray-300 px-4 py-2.5 focus:border-blue-600 focus:outline-none"
-
-                        />
-
-
-
-
-
-
-
-                        <input
-
-                            name="lines"
-
-                            placeholder="Number of Lines Needed"
-
-                            className="text-gray-700 w-full rounded-xl border border-gray-300 px-4 py-2.5 focus:border-blue-600 focus:outline-none"
-
-                        />
-
-
-
+                        ))}
 
 
 
@@ -312,98 +429,64 @@ export default function HeroLeadForm() {
 
                         <button
 
-
                             disabled={loading}
-
 
                             type="submit"
 
-
                             className="w-full rounded-xl bg-blue-600 hover:bg-blue-700 text-white py-3 font-semibold transition-all hover:shadow-lg"
-
 
                         >
 
-
-
                             {loading
-
                                 ? "Submitting..."
-
                                 : "Get Started Free"
-
                             }
-
 
 
                         </button>
 
 
 
-
-
                     </form>
-
-
 
 
                 </>
 
 
-
             ) : (
-
-
 
 
                 <div className="text-center py-8">
 
 
-
                     <CheckCircle
-
                         size={65}
-
                         className="mx-auto text-green-600"
-
                     />
-
-
 
 
 
                     <h2 className="mt-5 text-2xl font-bold text-gray-900">
 
-
                         Thank You!
-
 
                     </h2>
 
 
 
-
-
                     <p className="mt-3 text-gray-600 leading-7">
-
 
                         Your request has been submitted successfully.
 
-
                         <br />
-
 
                         Someone from our team will reach out shortly
                         to help you start your free trial or answer any questions.
 
-
                     </p>
 
 
-
                 </div>
-
-
 
 
             )}
@@ -413,80 +496,37 @@ export default function HeroLeadForm() {
 
 
 
-
-
-            {/* Trust Section */}
-
-
-
             <div className="mt-5 border-t pt-5 space-y-2">
 
 
 
-
-
                 <div className="flex items-center gap-2 text-sm text-gray-600">
 
-
-                    <CheckCircle
-
-                        size={16}
-
-                        className="text-green-600"
-
-                    />
-
+                    <CheckCircle size={16} className="text-green-600" />
 
                     15-Day Free Trial
 
-
                 </div>
-
-
-
 
 
 
                 <div className="flex items-center gap-2 text-sm text-gray-600">
 
-
-                    <CheckCircle
-
-                        size={16}
-
-                        className="text-green-600"
-
-                    />
-
+                    <CheckCircle size={16} className="text-green-600" />
 
                     35+ Business Features
 
-
                 </div>
-
-
-
-
 
 
 
                 <div className="flex items-center gap-2 text-sm text-gray-600">
 
-
-                    <ShieldCheck
-
-                        size={16}
-
-                        className="text-blue-600"
-
-                    />
-
+                    <ShieldCheck size={16} className="text-blue-600" />
 
                     Secure Cloud Communications
 
-
                 </div>
-
 
 
 
@@ -494,10 +534,10 @@ export default function HeroLeadForm() {
 
 
 
-
         </div>
 
 
     );
+
 
 }
