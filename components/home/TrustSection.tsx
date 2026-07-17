@@ -1,25 +1,27 @@
 "use client";
 
+import { assetPath } from "@/lib/assetPath";
+
 export default function TrustSection() {
 
 
     const trustCards = [
         {
-            image: "/images/trust/trusted-business.png",
+            image: assetPath("/images/trust/trusted-business.png"),
             title: "Trusted Business Communication",
             description:
                 "Reliable cloud phone systems helping businesses stay connected with customers every day."
         },
 
         {
-            image: "/images/trust/professional-office.png",
+            image: assetPath("/images/trust/professional-office.png"),
             title: "Built For Professional Offices",
             description:
                 "Secure communication solutions designed for medical offices, clinics, and professional businesses."
         },
 
         {
-            image: "/images/trust/work-anywhere.png",
+            image: assetPath("/images/trust/work-anywhere.png"),
             title: "Work From Anywhere",
             description:
                 "Connect desk phones, smartphones, and computers with one powerful cloud communication platform."
@@ -28,7 +30,7 @@ export default function TrustSection() {
 
     const stats = [
         {
-            image: "/images/trust/uptime.png",
+            image: assetPath("/images/trust/uptime.png"),
             number: "99.99%",
             title: "Reliable Uptime",
             description:
@@ -36,7 +38,7 @@ export default function TrustSection() {
         },
 
         {
-            image: "/images/trust/features.png",
+            image: assetPath("/images/trust/features.png"),
             number: "35+",
             title: "Business Features",
             description:
@@ -44,7 +46,7 @@ export default function TrustSection() {
         },
 
         {
-            image: "/images/trust/free-trial.png",
+            image: assetPath("/images/trust/free-trial.png"),
             number: "15 Days",
             title: "Free Trial",
             description:
@@ -52,7 +54,7 @@ export default function TrustSection() {
         },
 
         {
-            image: "/images/trust/secure-cloud.png",
+            image: assetPath("/images/trust/secure-cloud.png"),
             number: "Secure",
             title: "Cloud Platform",
             description:

@@ -1,4 +1,7 @@
+"use client";
+
 import { Menu } from "lucide-react";
+import { assetPath } from "@/lib/assetPath";
 
 export default function Navbar() {
     return (
@@ -11,7 +14,7 @@ export default function Navbar() {
                 <div className="flex items-center gap-3">
 
                     <img
-                        src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/logo.png`}
+                        src={assetPath("/logo.png")}
                         alt="LinkFinity logo"
                         className="h-11 w-auto object-contain"
                     />
@@ -70,7 +73,6 @@ export default function Navbar() {
                     <button className="bg-blue-600 hover:bg-blue-700 text-white px-5 py-3 rounded-xl font-semibold">
                         Start Free Trial
                     </button>
-
 
                 </div>
 

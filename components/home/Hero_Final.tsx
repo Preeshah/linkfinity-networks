@@ -9,11 +9,9 @@ import {
 
 import { motion } from "framer-motion";
 import HeroLeadForm from "./HeroLeadForm";
-
+import { assetPath } from "@/lib/assetPath";
 
 export default function Hero() {
-
-    const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
 
     return (
@@ -147,7 +145,7 @@ export default function Hero() {
 
                             <img
 
-                                src={`${basePath}/hero-image.png`}
+                                src={`${assetPath("/hero-image.png")}`}
 
                                 alt="LinkFinity Networks cloud phone system"
 
