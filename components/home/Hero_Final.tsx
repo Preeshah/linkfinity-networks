@@ -30,7 +30,7 @@ export default function Hero() {
             <div className="relative max-w-7xl mx-auto px-6">
 
 
-                <div className="grid items-center gap-10 lg:grid-cols-2">
+                <div className="grid items-center gap-8 md:gap-10 md:grid-cols-2">
 
 
 
@@ -247,7 +247,7 @@ export default function Hero() {
                         }}
 
 
-                        className="relative flex justify-center lg:justify-end"
+                        className="relative flex justify-center md:justify-end"
 
 
                     >

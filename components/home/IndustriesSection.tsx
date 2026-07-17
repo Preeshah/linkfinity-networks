@@ -112,7 +112,7 @@ export default function IndustriesSection() {
 
     return (
 
-        <section className="py-24 bg-gray-50">
+        <section id="industries-section" className="py-24 bg-gray-50">
 
 
             <div className="max-w-7xl mx-auto px-6">

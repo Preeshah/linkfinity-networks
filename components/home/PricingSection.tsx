@@ -67,7 +67,7 @@ export default function PricingSection() {
 
     return (
 
-        <section className="py-24 bg-white">
+        <section id="pricing-section" className="py-24 bg-white">
 
 
             <div className="max-w-7xl mx-auto px-6">
@@ -216,11 +216,12 @@ export default function PricingSection() {
 
 
 
-                            <button className="mt-10 w-full bg-blue-600 text-white py-3 rounded-xl font-semibold">
-
+                            <a
+                                href="#hero-lead-form"
+                                className="mt-10 block w-full bg-blue-600 text-white py-3 rounded-xl font-semibold text-center"
+                            >
                                 Start Free Trial
-
-                            </button>
+                            </a>
 
 
 

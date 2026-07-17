@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import {
     CheckCircle,
@@ -26,6 +26,41 @@ export default function HeroLeadForm() {
 
 
     const [submitted, setSubmitted] = useState(false);
+
+    useEffect(() => {
+        const focusFirstField = () => {
+            if (window.location.hash !== "#hero-lead-form") {
+                return;
+            }
+
+            window.setTimeout(() => {
+                const formSection = document.getElementById("hero-lead-form");
+                const firstInput = formSection?.querySelector<HTMLInputElement>(
+                    'input[name="businessName"]'
+                );
+
+                if (!formSection || !firstInput) {
+                    return;
+                }
+
+                const navbar = document.querySelector("nav");
+                const navbarHeight = navbar?.getBoundingClientRect().height ?? 80;
+                const topOffset = formSection.getBoundingClientRect().top + window.scrollY - navbarHeight - 16;
+
+                window.scrollTo({
+                    top: topOffset,
+                    behavior: "smooth"
+                });
+
+                firstInput.focus({ preventScroll: true });
+            }, 120);
+        };
+
+        focusFirstField();
+        window.addEventListener("hashchange", focusFirstField);
+
+        return () => window.removeEventListener("hashchange", focusFirstField);
+    }, []);
 
     const [loading, setLoading] = useState(false);
 
@@ -300,7 +335,7 @@ export default function HeroLeadForm() {
 
     return (
 
-        <div className="bg-white rounded-3xl shadow-2xl border border-gray-100 p-6">
+        <div id="hero-lead-form" className="scroll-mt-24 md:scroll-mt-32 bg-white rounded-3xl shadow-2xl border border-gray-100 p-6">
 
 
             {!submitted ? (

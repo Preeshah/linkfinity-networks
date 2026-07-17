@@ -5,6 +5,8 @@ import FeaturesSection from "@/components/home/FeaturesSection";
 import IndustriesSection from "@/components/home/IndustriesSection";
 import PricingSection from "@/components/home/PricingSection";
 import Hero_Final from "@/components/home/Hero_Final";
+import Footer from "@/components/home/Footer";
+import CookieConsent from "@/components/home/CookieConsent";
 
 export default function Home() {
 
@@ -25,6 +27,9 @@ export default function Home() {
       <IndustriesSection />
 
       <PricingSection />
+
+      <Footer />
+      <CookieConsent />
 
     </main>
 
