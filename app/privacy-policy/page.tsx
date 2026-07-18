@@ -44,6 +44,31 @@ export default function PrivacyPolicy() {
 
 
                     <h2 className="text-2xl font-bold text-gray-900">
+                        Third-Party Chatbot
+                    </h2>
+
+
+                    <p>
+                        Our website includes a chatbot service powered by a third-party provider.
+                        When you interact with the chatbot, certain information may be collected
+                        and processed by this third-party service, including:
+                    </p>
+
+                    <ul className="list-disc list-inside space-y-2 ml-2">
+                        <li>Messages you send to the chatbot</li>
+                        <li>User session data and interaction history</li>
+                        <li>Your IP address and device information</li>
+                        <li>Any personal information you voluntarily provide in chat</li>
+                    </ul>
+
+                    <p>
+                        The third-party chatbot provider may use this data according to their
+                        own privacy policy. We recommend reviewing their privacy terms before
+                        engaging with the chatbot. LinkFinity Networks is not responsible for
+                        the third-party provider's handling of your data.
+                    </p>
+
+                    <h2 className="text-2xl font-bold text-gray-900">
                         Data Security
                     </h2>
 
@@ -51,6 +76,8 @@ export default function PrivacyPolicy() {
                     <p>
                         We take reasonable measures to protect your information
                         using secure technologies and industry best practices.
+                        Please note that communications with third-party services
+                        may be subject to different security standards.
                     </p>
 
 

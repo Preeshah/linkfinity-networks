@@ -64,6 +64,42 @@ export default function TermsAndConditions() {
                         their selected service plan and agreement.
                     </p>
 
+                    <h2 className="text-2xl font-bold text-gray-900">
+                        Third-Party Chatbot Service
+                    </h2>
+
+
+                    <p>
+                        LinkFinity Networks provides a chatbot on this website powered by
+                        a third-party service provider. The use of this chatbot is subject to
+                        the following terms:
+                    </p>
+
+                    <ul className="list-disc list-inside space-y-2 ml-2">
+                        <li>The chatbot is provided "as-is" for informational purposes only</li>
+                        <li>LinkFinity Networks is not responsible for third-party service interruptions or errors</li>
+                        <li>Users agree not to use the chatbot for illegal, abusive, or misleading purposes</li>
+                        <li>The third-party provider may update or discontinue the service at any time</li>
+                        <li>Information provided through the chatbot should not be considered professional legal or technical advice</li>
+                        <li>LinkFinity Networks disclaims liability for any damages arising from chatbot use</li>
+                    </ul>
+
+                    <p>
+                        For issues related to the chatbot functionality, users should contact
+                        LinkFinity Networks. For issues related to data handling, please refer
+                        to the third-party provider's privacy policy and terms.
+                    </p>
+
+                    <h2 className="text-2xl font-bold text-gray-900">
+                        Disclaimer of Warranties
+                    </h2>
+
+
+                    <p>
+                        LinkFinity Networks services, including the chatbot feature, are provided
+                        "as-is" without warranties of any kind, either express or implied. We do not
+                        warrant that services will be uninterrupted, error-free, or secure.
+                    </p>
 
                     <h2 className="text-2xl font-bold text-gray-900">
                         Contact

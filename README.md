@@ -92,6 +92,46 @@ Legal page with terms of service and conditions of use.
 
 ---
 
+## 🤖 Chatbot Feature
+
+### Overview
+LinkFinity Networks website includes an AI-powered chatbot to assist visitors with questions and support requests. The chatbot appears on the website to provide instant responses to common inquiries.
+
+### Third-Party Service
+The chatbot is powered by a **third-party provider** and is not directly operated by LinkFinity Networks. This means:
+
+- **Data Processing:** The third-party provider may collect and process user interactions
+- **Separate Privacy Policy:** The provider has their own privacy terms and data handling practices
+- **Service Independence:** The chatbot service operates independently and may be updated or changed by the provider
+
+### Data Collected by Chatbot
+When users interact with the chatbot, the following information may be collected:
+- Messages and conversation content
+- Session data and chat history
+- User IP address
+- Device and browser information
+- Timestamps of interactions
+- Any personal information voluntarily provided in the chat
+
+### Privacy & Legal Compliance
+- **Privacy Policy:** See [Privacy Policy](/privacy-policy) for details on how chatbot data is handled
+- **Terms & Conditions:** See [Terms and Conditions](/terms-and-conditions) for chatbot usage terms
+- **Disclaimer:** Information from the chatbot should not be considered professional legal or technical advice
+- **No Liability:** LinkFinity Networks is not responsible for third-party service issues or data handling
+
+### Important Notes
+✅ Do not share sensitive information (passwords, credit cards) in the chatbot  
+✅ Chatbot responses are AI-generated and may not be 100% accurate  
+✅ For urgent matters, contact LinkFinity Networks directly  
+✅ The chatbot service may be updated or discontinued at any time  
+
+### Contact Information
+For concerns about chatbot functionality or data privacy:
+- **Email:** info@linkfinitynetworks.com
+- **Phone:** 445-242-8485
+
+---
+
 ## 🧩 Components Explained
 
 ### Home Page Components
